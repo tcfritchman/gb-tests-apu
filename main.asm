@@ -193,22 +193,6 @@ begin:
     ; return to main loop
     jp .main_loop
 
-    ; ld a, [TestCaseTableSize]
-    ; cp c ; TODO make 16 bit comparison
-
-    ; jp nz, .main_loop
-    ; ld b, 0
-    ; ld c, 0
-    ; jp .main_loop
-
-    ; call APUReset
-    ; call E109
-
-    ; Finally
-    ; call APUReset
-.lockup
-    jr .lockup
-
 SECTION "Channel 1 Tests", ROM0
 
 L101_Sound_1:
@@ -294,7 +278,6 @@ DB %11010110 ; SOUND_CH1_LOWFREQ
 DB %01000110 ; SOUND_CH1_HIGHFREQ
 
 L103:
-
     ; Without modification
     ld hl, L103_Sound_1
     call PlaySoundHL
@@ -313,7 +296,6 @@ L103:
     call Wait500
 
     ret
-
 
 ; Max Sound Length with Restart
 L104_Sound_1:
@@ -335,7 +317,6 @@ DB %11010110 ; SOUND_CH1_LOWFREQ
 DB %01000110 ; SOUND_CH1_HIGHFREQ
 
 L104:
-
     ; Without modification
     ld hl, L104_Sound_1
     call PlaySoundHL
