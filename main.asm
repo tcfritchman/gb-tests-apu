@@ -171,6 +171,12 @@ begin:
     ld de, 4 ; plus 4 to get location of function address of test
     add hl, de
 
+    ; grey palette colors
+    ld a, %01010100
+    ld [BG_PALETTE], a
+    ld [SPRITE_PALETTE_1], a
+    ld [SPRITE_PALETTE_2], a
+
     push bc
 
     ; play test case ("CALL" with function's address in HL)
@@ -189,6 +195,12 @@ begin:
     call APUReset
 
     pop bc
+
+    ; Set default palette
+    ld a, %11100100
+    ld [BG_PALETTE], a
+    ld [SPRITE_PALETTE_1], a
+    ld [SPRITE_PALETTE_2], a
 
     ; return to main loop
     jp .main_loop
