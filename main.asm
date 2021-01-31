@@ -1,4 +1,7 @@
 GAME_NAME equs "APU TEST"
+ROM_SIZE EQU 0
+RAM_SIZE EQU 0
+CART_TYPE EQU $00 ; ROM ONLY
 
 INCLUDE "gingerbread.asm"
 INCLUDE "font.inc"
