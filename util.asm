@@ -47,9 +47,23 @@ APUReset:
     call EnableAudio
     ret
 
+; Loads an array of data into Wave RAM for APU Channel 3
+; Parameters:
+;   HL - address of the first byte of data to copy
+CopyWaveform:
+    push de
+    push bc
+    ld de, SOUND_WAVE_TABLE_START
+    ld bc, SOUND_WAVE_TABLE_STOP - SOUND_WAVE_TABLE_START
+    call mCopy
+    pop bc
+    pop de
+    ret
+
 Wait1000:
     call Wait500
     call Wait500
+    ; TODO Add ret here
 
 Wait500:
     call Wait100
@@ -57,6 +71,7 @@ Wait500:
     call Wait100
     call Wait100
     call Wait100
+    ; TODO Add ret here
 
 Wait100:
     ld de, 10500

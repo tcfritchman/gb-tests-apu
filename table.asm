@@ -7,7 +7,6 @@ SECTION "Test Case Table", ROM0
 ; Bytes 5 & 6: address of the test case function
 
 TestCaseTable:
-
 DB "L101"
 DW L101
 DB "L102"
@@ -60,6 +59,39 @@ DB "S106"
 DW S106
 DB "S107"
 DW S107
+
+DB "W301"
+DW W301
+DB "W302"
+DW W302
+DB "W303"
+DW W303
+DB "W304"
+DW W304
+DB "W305"
+DW W305
+DB "W306"
+DW W306
+DB "W307"
+DW W307
+DB "W308"
+DW W308
+DB "L301"
+DW L301
+DB "L302"
+DW L302
+DB "L303"
+DW L303
+DB "L304"
+DW L304
+DB "L305"
+DW L305
+DB "L306"
+DW L306
+DB "F301"
+DW F301
+DB "F302"
+DW F302
 
 TestCaseTableSize:
 DB (TestCaseTableSize - TestCaseTable)
