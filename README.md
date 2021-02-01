@@ -1,4 +1,4 @@
-# gb-apu-tests
+# gb-tests-apu
 
 Gameboy audio hardware test program
 
