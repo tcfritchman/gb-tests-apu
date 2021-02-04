@@ -63,7 +63,7 @@ CopyWaveform:
 Wait1000:
     call Wait500
     call Wait500
-    ; TODO Add ret here
+    ret
 
 Wait500:
     call Wait100
@@ -71,7 +71,7 @@ Wait500:
     call Wait100
     call Wait100
     call Wait100
-    ; TODO Add ret here
+    ret
 
 Wait100:
     ld de, 10500
