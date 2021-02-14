@@ -57,7 +57,7 @@ RunAllTests:
     
     ; check if end of list and loop if not
     ld a, [TestCaseTableSize] ; array size
-    cp c ; TODO: make 16 bit comparison if table size exceeds 256
+    cp c ; TODO: make 16 bit comparison if table size exceeds 42
     jp nz, .all_tests_loop
 
     pop hl

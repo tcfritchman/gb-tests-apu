@@ -54,9 +54,9 @@ begin:
 
 .menu_up
     ; do nothing if end of list
-    ld a, [TestCaseTableSize] ; array size
+    ld a, [TestCaseTableSize] ; array size in bytes
     sub a, 6 ; address - 1 element's size
-    cp c ; TODO: make 16 bit comparison if table size exceeds 256
+    cp c ; TODO: make 16 bit comparison if table size exceeds 42
 
     jp z, .main_loop
 
