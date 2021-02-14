@@ -55,8 +55,16 @@ begin:
 .menu_up
     ; do nothing if end of list
     ld a, [TestCaseTableSize] ; array size in bytes
-    sub a, 6 ; address - 1 element's size
-    cp c ; TODO: make 16 bit comparison if table size exceeds 42
+    ld l, a
+    ld a, [TestCaseTableSize + 1]
+    ld h, a
+    dec hl
+    dec hl
+    dec hl
+    dec hl
+    dec hl
+    dec hl ; minus element size
+    call CompareBC
 
     jp z, .main_loop
 
@@ -72,8 +80,9 @@ begin:
 
 .menu_down
     ; do nothing if start of list
-    ld a, 0
-    cp c ; TODO: make 16 bit comparison
+    ld h, 0
+    ld l, 0
+    call CompareBC
 
     jp z, .main_loop
 

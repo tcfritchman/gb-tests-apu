@@ -1,6 +1,7 @@
 SECTION "Utility Functions", ROM0
 
 ; Run test case from the table
+;
 ; Parameters:
 ; BC - array offset of the test case in the table
 RunTest:
@@ -57,7 +58,10 @@ RunAllTests:
     
     ; check if end of list and loop if not
     ld a, [TestCaseTableSize] ; array size
-    cp c ; TODO: make 16 bit comparison if table size exceeds 42
+    ld l, a
+    ld a, [TestCaseTableSize + 1]
+    ld h, a
+    call CompareBC
     jp nz, .all_tests_loop
 
     pop hl
@@ -112,6 +116,7 @@ APUReset:
     ret
 
 ; Loads an array of data into Wave RAM for APU Channel 3
+;
 ; Parameters:
 ; HL - address of the first byte of data to copy
 CopyWaveform:
@@ -148,3 +153,21 @@ Wait100:
 	or e
 	jr nz, .loop
 	ret
+
+; Compare HL with BC by subtracting BC from HL and set flags accordingly
+;
+; Parameters:
+; HL - Left-hand side of the comparison
+;
+; Flags:
+; Z if HL and BC are equal
+; C if BC is less than HL
+;
+; Destroys contents of AF
+CompareBC:
+    ld a, h
+    cp b
+    ret nz
+    ld a, l
+    cp c
+    ret

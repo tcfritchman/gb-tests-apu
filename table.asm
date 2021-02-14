@@ -97,4 +97,4 @@ DB "F302"
 DW F302
 
 TestCaseTableSize:
-DB (TestCaseTableSize - TestCaseTable)
+DW (TestCaseTableSize - TestCaseTable)
