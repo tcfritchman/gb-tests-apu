@@ -56,7 +56,7 @@ begin:
     ; do nothing if end of list
     ld a, [TestCaseTableSize] ; array size
     sub a, 6 ; address - 1 element's size
-    cp c ; TODO make 16 bit comparison
+    cp c ; TODO: make 16 bit comparison if table size exceeds 256
 
     jp z, .main_loop
 
@@ -66,14 +66,14 @@ begin:
     inc bc
     inc bc
     inc bc
-    inc bc
+    inc bc ; bc += 6
 
     jp .render_text
 
 .menu_down
     ; do nothing if start of list
     ld a, 0
-    cp c ; TODO make 16 bit comparison
+    cp c ; TODO: make 16 bit comparison
 
     jp z, .main_loop
 
@@ -83,7 +83,7 @@ begin:
     dec bc
     dec bc
     dec bc
-    dec bc
+    dec bc ; bc -= 6
 
     jp .render_text
 
@@ -91,7 +91,7 @@ begin:
     ; get array address
     ld hl, TestCaseTable
 
-    add hl, bc ; text to write is at this address
+    add hl, bc ; test is at this address
 
     push bc
     
@@ -108,37 +108,13 @@ begin:
     jp .main_loop
 
 .menu_select_test
-    ; get array address
-    ld hl, TestCaseTable
-
-    add hl, bc ; start address of element
-    ld de, 4 ; plus 4 to get location of function address of test
-    add hl, de
-
     ; grey palette colors
     ld a, %01010100
     ld [BG_PALETTE], a
     ld [SPRITE_PALETTE_1], a
     ld [SPRITE_PALETTE_2], a
 
-    push bc
-
-    ; play test case ("CALL" with function's address in HL)
-    ld bc, .return_from_test
-    push bc
-    ld d, h
-    ld e, l
-    ld a, [de]
-    ld l, a
-    inc de
-    ld a, [de]
-    ld h, a
-    jp hl
-
-.return_from_test
-    call APUReset
-
-    pop bc
+    call RunTest
 
     ; Set default palette
     ld a, %11100100
@@ -146,5 +122,4 @@ begin:
     ld [SPRITE_PALETTE_1], a
     ld [SPRITE_PALETTE_2], a
 
-    ; return to main loop
     jp .main_loop

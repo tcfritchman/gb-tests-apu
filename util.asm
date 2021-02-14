@@ -1,5 +1,69 @@
 SECTION "Utility Functions", ROM0
 
+; Run test case from the table
+; Parameters:
+; BC - array offset of the test case in the table
+RunTest:
+    ; save all other registers
+    push af
+    push de
+    push hl
+
+    ; get array address
+    ld hl, TestCaseTable
+
+    add hl, bc ; start address of element
+    ld de, 4 ; plus 4 to get location of function address of test
+    add hl, de
+
+    push bc
+
+    ; play test case ("CALL" with function's address in HL)
+    ld bc, .return_from_test
+    push bc
+    ld d, h
+    ld e, l
+    ld a, [de]
+    ld l, a
+    inc de
+    ld a, [de]
+    ld h, a
+    jp hl
+
+.return_from_test
+    call APUReset
+    pop bc
+    pop hl
+    pop de
+    pop af
+    ret
+
+; Run all test cases in the table
+RunAllTests:
+    push bc
+    push hl
+
+    ; initialize array index to the start of the individual test cases
+    ld bc, 6
+
+.all_tests_loop
+    call RunTest
+    inc bc
+    inc bc
+    inc bc
+    inc bc
+    inc bc
+    inc bc ; bc += 6
+    
+    ; check if end of list and loop if not
+    ld a, [TestCaseTableSize] ; array size
+    cp c ; TODO: make 16 bit comparison if table size exceeds 256
+    jp nz, .all_tests_loop
+
+    pop hl
+    pop bc
+    ret
+
 Sound_Ch1_Default:
 DW SOUND_CH1_START
 DB %00000000
@@ -49,7 +113,7 @@ APUReset:
 
 ; Loads an array of data into Wave RAM for APU Channel 3
 ; Parameters:
-;   HL - address of the first byte of data to copy
+; HL - address of the first byte of data to copy
 CopyWaveform:
     push de
     push bc

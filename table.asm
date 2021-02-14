@@ -7,6 +7,9 @@ SECTION "Test Case Table", ROM0
 ; Bytes 5 & 6: address of the test case function
 
 TestCaseTable:
+DB "ALL0"
+DW RunAllTests
+
 DB "L101"
 DW L101
 DB "L102"
