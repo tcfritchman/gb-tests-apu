@@ -11,6 +11,7 @@ INCLUDE "ch1.asm"
 INCLUDE "ch2.asm"
 INCLUDE "ch3.asm"
 INCLUDE "ch4.asm"
+INCLUDE "out.asm"
 
 SECTION "Program", ROM0
 

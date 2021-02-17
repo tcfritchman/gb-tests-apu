@@ -133,5 +133,12 @@ DW P402
 DB "P403"
 DW P403
 
+DB "OT01"
+DW OT01
+DB "OT02"
+DW OT02
+DB "OT03"
+DW OT03
+
 TestCaseTableSize:
 DW (TestCaseTableSize - TestCaseTable)

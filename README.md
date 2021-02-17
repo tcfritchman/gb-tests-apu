@@ -42,13 +42,6 @@ Gameboy audio hardware test program
 - Modify Sweep Shift value during sweep (`S106`)
 - Restart sound during sweep (`S107`)
 
-### Sound ON Register Flags
-- Sound flag should be OFF when Channel is disabled  (`Z101`)
-- Sound flag should be ON when Counter mode is enabled and sound is playing
-- Sound flag should be OFF when Counter mode is ennabled and sound has stopped
-- Sound flag should be ON when Counter mode is disabled and sound is playing
-- Sound flag should be ON when Envelope volume is 0, but Counter has not ended
-
 ## Channel 3 - Waveform
 
 ### Wave RAM
