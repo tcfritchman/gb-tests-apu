@@ -7,31 +7,31 @@ Gameboy audio hardware test program
 ## Channels 1 & 2 - Tone
 
 ### Sound Length (Counter/Consecutive)
-- Sound plays indefinitely when counter is disabled (`L101`)
-- Sound lengths are accurate (`L102`)
-- Increase sound length during sound (`L103`)
-- Decrease sound length during sound (`L104`)
-- Disable Sound length during sound (`L105`)
-- Enable Sound length during sound (`L106`)
+- Sound plays indefinitely when counter is disabled (`L101`, `L201`)
+- Sound lengths are accurate (`L102`, `L202`)
+- Increase sound length during sound (`L103`, `L203`)
+- Decrease sound length during sound (`L104`, `L204`)
+- Disable Sound length during sound (`L105`, `L205`)
+- Enable Sound length during sound (`L106`, `L206`)
 
 ### Wave Duty
-- Wave duty values are accurate (`D101`)
-- Modify wave duty during sound (wave duty modulation) (`D102`)
+- Wave duty values are accurate (`D101`, `D201`)
+- Modify wave duty during sound (wave duty modulation) (`D102`, `D202`)
 
 ### Frequency
-- Frequency values are accurate  (`F101`)
-- Modify frequency during sound (`F102`)
+- Frequency values are accurate  (`F101`, `F201`)
+- Modify frequency during sound (`F102`, `F202`)
 
 ### Volume Envelope
-- Initial Volume values are accurate (volume sweep disabled)  (`E101`)
-- Volume sweep ramp deltas are accurate (use slowest ramp, min/mid/max starting volumes) - ascending (`E102`)
-- Volume sweep ramp deltas are accurate (use slowest ramp, min/mid/max starting volumes) - descending (`E103`)
-- Volume sweep ramp slopes are accurate - ascending (`E104`)
-- Volume sweep ramp slopes are accurate - descending (`E105`)
-- Modify initial volume during sweep (`E106`)
-- Modify ramp direction during sweep (`E107`)
-- Modify ramp slope during sweep (`E108`)
-- Restart sound during sweep (`E109`)
+- Initial Volume values are accurate (volume sweep disabled)  (`E101`, `E201`)
+- Volume sweep ramp deltas are accurate (use slowest ramp, min/mid/max starting volumes) - ascending (`E102`, `E202`)
+- Volume sweep ramp deltas are accurate (use slowest ramp, min/mid/max starting volumes) - descending (`E103`, `E203`)
+- Volume sweep ramp slopes are accurate - ascending (`E104`, `E204`)
+- Volume sweep ramp slopes are accurate - descending (`E105`, `E205`)
+- Modify initial volume during sweep (`E106`, `E206`)
+- Modify ramp direction during sweep (`E107`, `E207`)
+- Modify ramp slope during sweep (`E108`, `E208`)
+- Restart sound during sweep (`E109`, `E209`)
 
 ### Frequency Sweep (Ch. 1 only)
 - Sweep Time values are accurate  (`S101`)
