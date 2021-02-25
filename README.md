@@ -98,6 +98,10 @@ Gameboy audio hardware test program
 - Modify Master volume during sound (`OT02`)
 - Disable APU during sound (`0T03`)
 
+## Omnibus
+
+- Play all tests sequentially (`ALL0`)
+
 # Building From Source
 
 ## Linux, Mac, Windows (Cygwin)
